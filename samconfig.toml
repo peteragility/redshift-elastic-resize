@@ -1,0 +1,10 @@
+version = 0.1
+[default]
+[default.deploy]
+[default.deploy.parameters]
+stack_name = "redshift-resize"
+s3_bucket = "aws-sam-cli-managed-default-samclisourcebucket-1j9dtgc4d07ja"
+s3_prefix = "redshift-resize"
+region = "us-west-2"
+capabilities = "CAPABILITY_IAM"
+

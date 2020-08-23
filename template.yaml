@@ -1,0 +1,34 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Transform: AWS::Serverless-2016-10-31
+Description: >
+  redshift-resize
+
+  Sample SAM Template for redshift-resize
+
+# More info about Globals: https://github.com/awslabs/serverless-application-model/blob/master/docs/globals.rst
+Globals:
+  Function:
+    Timeout: 30
+
+Resources:
+  RedshiftResizeFunction:
+    Type: AWS::Serverless::Function # More info about Function Resource: https://github.com/awslabs/serverless-application-model/blob/master/versions/2016-10-31.md#awsserverlessfunction
+    Properties:
+      CodeUri: hello_world/
+      Handler: app.lambda_handler
+      Runtime: python3.7
+      Policies:
+        - AmazonRedshiftFullAccess
+      Environment:
+        Variables:
+          REDSHIFT_CLUSTER_ID: "redshift-pccw-test"
+          CHECK_LAST_RESIZE: "false"
+          TARGET_NODE_COUNT: "4"
+
+Outputs:
+  RedshiftResizeFunction:
+    Description: "Redshift Resize Lambda Function ARN"
+    Value: !GetAtt RedshiftResizeFunction.Arn
+  RedshiftResizeFunctionIamRole:
+    Description: "Implicit IAM Role created for Redshift Resize function"
+    Value: !GetAtt RedshiftResizeFunctionRole.Arn
