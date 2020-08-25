@@ -22,8 +22,16 @@ Resources:
       Environment:
         Variables:
           REDSHIFT_CLUSTER_ID: "redshift-pccw-test"
-          CHECK_LAST_RESIZE: "false"
+          CHECK_LAST_RESIZE: "true"
           TARGET_NODE_COUNT: "4"
+      Events:
+        ScheduleResize:
+          Type: Schedule 
+          Properties:
+            Schedule: 'cron(10 18 * * ? *)'
+            Name: RedshiftResizeSchedule
+            Description: Trigger every 2:10 am hk time for example
+            Enabled: False
 
 Outputs:
   RedshiftResizeFunction:
