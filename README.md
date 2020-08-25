@@ -14,7 +14,7 @@ To use the SAM CLI, you need the following tools.
 
 * SAM CLI - [Install the SAM CLI](https://docs.aws.amazon.com/serverless-application-model/latest/developerguide/serverless-sam-cli-install.html)
 
-To build and deploy your application for the first time, run the following in your shell:
+To build and deploy your application for the first time, first git clone this repo and then run the following in your shell:
 
 ```bash
 sam build
